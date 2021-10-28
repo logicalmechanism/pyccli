@@ -1,5 +1,5 @@
-import process
-import helper
+from process import output
+from helper import whichnet, check_if_file_exists, check_if_valid_json
 
 
 def build(protocol_params_file, tx_out_file, change_address, final_tip, utxo_in_out, utxo_collateral, mainnet_flag=True):
@@ -23,8 +23,8 @@ def build(protocol_params_file, tx_out_file, change_address, final_tip, utxo_in_
     ]
     func += utxo_collateral
     func += utxo_in_out
-    func += helper.whichnet(mainnet_flag)
-    return process.output(func)
+    func += whichnet(mainnet_flag)
+    return output(func)
 
 
 def sign(tx_body_file, tx_signed_file, signers, mainnet_flag=True):
@@ -41,8 +41,8 @@ def sign(tx_body_file, tx_signed_file, signers, mainnet_flag=True):
         tx_signed_file
     ]
     func += signers
-    func += helper.whichnet(mainnet_flag)
-    return process.output(func)
+    func += whichnet(mainnet_flag)
+    return output(func)
 
 
 def submit(file_path, file_name, mainnet_flag=True):
@@ -57,8 +57,8 @@ def submit(file_path, file_name, mainnet_flag=True):
         '--tx-file',
         file_path+file_name
     ]
-    func += helper.whichnet(mainnet_flag)
-    return process.output(func)
+    func += whichnet(mainnet_flag)
+    return output(func)
 
 
 def policy_id(file_path, file_name):
@@ -72,7 +72,7 @@ def policy_id(file_path, file_name):
         '--script-file',
         file_path+file_name
     ]
-    return process.output(func)
+    return output(func)
 
 
 def calculate_min_value(file_path, file_name, multi_asset_string):
@@ -88,21 +88,21 @@ def calculate_min_value(file_path, file_name, multi_asset_string):
         '--multi-asset',
         multi_asset_string
     ]
-    return process.output(func)
+    return output(func)
 
 
 def hash_script_data(value):
     """
     Get the hash value of some script data
     """
-    if helper.check_if_file_exists(value):
+    if check_if_file_exists(value):
         value_type = [
             '--script-data-file',
             value
         ]
     else:
         value = str(value)
-        if not helper.check_if_valid_json(value):
+        if not check_if_valid_json(value):
             value = '"{}"'.format(value)
         value_type = [
             '--script-data-value',
@@ -114,7 +114,7 @@ def hash_script_data(value):
         'hash-script-data',
     ]
     func += value_type
-    return process.output(func)
+    return output(func)
 
 
 if __name__ == "__main__":

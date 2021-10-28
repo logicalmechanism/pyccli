@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: pyccli
+Version: 0.0.1
+Summary: Python code for building off chain transaction on Cardano.
+Home-page: https://github.com/logicalmechanism/pyccli
+Author: Logical Mechanism
+Author-email: logical.mechanism@protonmail.com
+License: BSD 2-clause
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.9
+License-File: LICENSE
+
+UNKNOWN
+

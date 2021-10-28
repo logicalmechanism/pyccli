@@ -1,5 +1,5 @@
-import process
-import helper
+from process import output
+from helper import whichnet
 
 
 def key_hash(verification_key_path):
@@ -10,7 +10,7 @@ def key_hash(verification_key_path):
         '--payment-verification-key-file', 
         verification_key_path
     ]
-    return process.output(func)
+    return output(func)
 
 
 def build(file_path, file_name, script_flag=False, mainnet_flag=True):
@@ -33,8 +33,8 @@ def build(file_path, file_name, script_flag=False, mainnet_flag=True):
         'build',
     ]
     func += type_of_file
-    func += helper.whichnet(mainnet_flag)
-    return process.output(func)
+    func += whichnet(mainnet_flag)
+    return output(func)
 
 
 def info(address):
@@ -45,7 +45,7 @@ def info(address):
         '--address', 
         address
     ]
-    return process.output(func)
+    return output(func)
 
 
 if __name__ == "__main__":

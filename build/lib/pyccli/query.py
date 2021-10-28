@@ -1,5 +1,5 @@
-import process
-import helper
+from process import output
+from helper  import whichnet
 
 def protocol_parameters(tmp='', file_name='protocol_parameters.json', mainnet_flag=True):
     """
@@ -14,8 +14,8 @@ def protocol_parameters(tmp='', file_name='protocol_parameters.json', mainnet_fl
         '--out-file',
         tmp+file_name
     ]
-    func += helper.whichnet(mainnet_flag)
-    return process.output(func)
+    func += whichnet(mainnet_flag)
+    return output(func)
 
 
 def tip(tmp='', file_name='tip.json', mainnet_flag=True):
@@ -29,8 +29,8 @@ def tip(tmp='', file_name='tip.json', mainnet_flag=True):
         '--out-file',
         tmp+file_name
     ]
-    func += helper.whichnet(mainnet_flag)
-    return process.output(func)
+    func += whichnet(mainnet_flag)
+    return output(func)
 
 
 def utxo(address, tmp='', file_name='utxo.json', mainnet_flag=True):
@@ -47,8 +47,8 @@ def utxo(address, tmp='', file_name='utxo.json', mainnet_flag=True):
         '--out-file',
         tmp+file_name
     ]
-    func += helper.whichnet(mainnet_flag)
-    return process.output(func)
+    func += whichnet(mainnet_flag)
+    return output(func)
 
 
 if __name__ == "__main__":
