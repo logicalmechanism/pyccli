@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='pyccli',
-    version='0.0.2',    
+    version='0.0.3',    
     description='Python code for building off chain transaction on Cardano.',
     url='https://github.com/logicalmechanism/pyccli',
     author='Logical Mechanism',
